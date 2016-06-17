@@ -23,21 +23,10 @@ function [f,g] = linear_regression(theta, X,y)
   
 %%% YOUR CODE HERE %%%
 
-  for i=1:m
-    f = f + ((theta')*X(:,i) - y(i)).^2;
-  end
-  f = f / 2.0;
+  f = norm((theta')*X - y).^2 / 2;
   
   for j=1:n
     for i=1:m
       g(j) = g(j) + X(j,i) * ((theta')*X(:,i)-y(i));
     end
   end
-  
-
-%     f = norm(y - theta'*X)^2/2;
-%     for j = 1:n
-%         for i = 1:m
-%             g(j) = g(j) + X(j,i)*(theta'*X(:,i) - y(i));
-%         end
-%     end
